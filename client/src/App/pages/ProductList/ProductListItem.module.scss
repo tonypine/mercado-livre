@@ -1,0 +1,35 @@
+@import "../../styles/colors.scss";
+
+.wrapper {
+  display: flex;
+  padding-top: 16px;
+  margin: 0 16px 16px;
+  color: $dark-gray;
+}
+.wrapper + .wrapper {
+  border-top: 1px solid $light-gray;
+}
+.detailsWrapper {
+  padding: 16px;
+}
+.picture {
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+}
+.price {
+  margin: 0 0 24px;
+  font-size: 28px;
+  line-height: 1;
+}
+.freeShipping {
+  margin-left: 8px;
+}
+.title {
+  font-size: 18px;
+  color: $darkest-gray;
+  text-decoration: none;
+}
+.title:hover {
+  text-decoration: underline;
+}

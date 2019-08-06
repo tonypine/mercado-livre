@@ -1,0 +1,20 @@
+@import "../../styles/colors.scss";
+
+.wrapper {
+  background-color: $brand;
+}
+.col {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 4px 0;
+}
+.logoAnchor {
+  display: flex;
+}
+.logo {
+  margin-right: 24px;
+}
+.search {
+  flex-grow: 1;
+}

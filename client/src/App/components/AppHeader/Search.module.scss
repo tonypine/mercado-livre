@@ -1,0 +1,24 @@
+@import "../../styles/colors.scss";
+
+.wrapper {
+  display: flex;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+}
+.input {
+  flex-grow: 1;
+  height: 40px;
+  padding: 0 16px;
+  line-height: 40px;
+  vertical-align: top;
+  border: 0;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+.button {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: $light-gray;
+  border: 0;
+  border-radius: 0 4px 4px 0;
+}

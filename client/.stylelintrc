@@ -1,0 +1,15 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-airbnb", "stylelint-config-recess-order"],
+  "rules": {
+    "at-rule-empty-line-before": ["always", {
+      except: ["after-same-name", "blockless-after-same-name-blockless", "blockless-after-blockless", "first-nested"]
+    }],
+    "number-leading-zero": "always",
+    "rule-empty-line-before": ["always", {
+      except: ["after-rule", "after-single-line-comment", "inside-block-and-after-rule", "first-nested"]
+    }],
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global"]
+    }]
+  }
+}

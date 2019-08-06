@@ -1,0 +1,15 @@
+@import "../../styles/colors.scss";
+
+.wrapper {
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.item {
+  font-size: 14px;
+  color: $gray;
+}
+.item + .item::before {
+  margin: 0 8px;
+  content: ">";
+}

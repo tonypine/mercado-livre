@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700&display=swap");
+@import "./App/styles/colors.scss";
+
+body {
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  line-height: 1.5;
+  background-color: $light-gray;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace;
+}

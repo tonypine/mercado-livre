@@ -1,0 +1,41 @@
+{
+  "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
+  "plugins": ["jsx-a11y", "react-hooks", "prettier"],
+  "rules": {
+    "lines-between-class-members": "off",
+    "import/imports-first": ["error", "absolute-first"],
+    "import/newline-after-import": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.test.js", "**/*.spec.js", "**/*.stories.js"] }
+    ],
+    "react/sort-comp": [
+      1,
+      {
+        "order": ["constructor", "lifecycle", "everything-else", "render"]
+      }
+    ],
+    "import/no-named-as-default": "off",
+    "no-underscore-dangle": 0,
+    "no-param-reassign": [
+      "error",
+      { "ignorePropertyModificationsFor": ["draft"] }
+    ],
+    "no-shadow": "off",
+    "prettier/prettier": ["error"],
+    "react/forbid-prop-types": 1,
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": 0
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
+  }
+}
