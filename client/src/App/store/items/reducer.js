@@ -3,13 +3,15 @@ import produce from 'immer';
 import ActionTypes from './types';
 
 const initialState = {
-  items: {}
+  items: {},
+  selectedItem: null,
+  categories: []
 };
 
 const actions = (type, payload, state, draft) => {
   const actions = {
     [ActionTypes.GET_ITEMS]: () => {
-      const { items } = payload;
+      const { items, categories } = payload;
       const newItems = {};
 
       items.forEach(item => {
@@ -17,10 +19,12 @@ const actions = (type, payload, state, draft) => {
       });
 
       draft.items = newItems;
+      draft.categories = categories;
     },
     [ActionTypes.GET_ITEM]: () => {
-      const { item } = payload;
-      draft.items[item.id] = item;
+      const { item, categories } = payload;
+      draft.selectedItem = item;
+      draft.categories = categories;
     }
   };
 

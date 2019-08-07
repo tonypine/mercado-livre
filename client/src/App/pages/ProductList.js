@@ -13,18 +13,12 @@ import ProductListItem from './ProductList/ProductListItem';
 import { getItems } from '../store/items/selectors';
 import { fetchItems } from '../store/items/actions';
 
-const categories = [
-  { name: 'Eletrônica, Audio e Vídeo' },
-  { name: 'iPod' },
-  { name: 'Reprodutores' },
-  { name: 'iPod Touch' },
-  { name: '32 GB' }
-];
 const ProductList = ({ location }) => {
   const { search } = qs.parse(location.search, { ignoreQueryPrefix: true });
 
   // REDUX
   const items = useSelector(getItems);
+  const categories = useSelector(state => state.items.categories);
   const dispatch = useDispatch();
 
   useEffect(() => {

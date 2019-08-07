@@ -10,7 +10,12 @@
   border-top: 1px solid $light-gray;
 }
 .detailsWrapper {
+  flex-grow: 1;
   padding: 16px;
+}
+.detailsHead {
+  display: flex;
+  justify-content: space-between;
 }
 .picture {
   width: 180px;
@@ -21,6 +26,9 @@
   margin: 0 0 24px;
   font-size: 28px;
   line-height: 1;
+}
+.state {
+  width: 180px;
 }
 .freeShipping {
   margin-left: 8px;

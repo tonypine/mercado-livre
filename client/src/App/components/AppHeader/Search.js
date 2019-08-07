@@ -37,7 +37,7 @@ const Search = ({ className, history, location }) => {
         }}
       />
       <button type="button" className={style.button} onClick={doSearch}>
-        <Picture src={`${Magnifier} 1x, ${Magnifier2x} 2x`} />
+        <Picture src={`${Magnifier} 1x, ${Magnifier2x} 2x`} alt="search" />
       </button>
     </div>
   );

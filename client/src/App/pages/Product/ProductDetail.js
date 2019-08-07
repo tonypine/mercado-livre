@@ -8,7 +8,7 @@ import { Picture } from 'react-responsive-picture';
 
 import style from './ProductDetail.module.scss';
 
-const Product = ({
+const ProductDetail = ({
   picture,
   title,
   price,
@@ -16,6 +16,8 @@ const Product = ({
   sold_quantity,
   condition
 }) => {
+  console.log(title);
+  if (!price) debugger;
   const { t } = useTranslation();
   const formatedPrice = Numeral(price.amount).format('$ 0,00');
 
@@ -47,4 +49,4 @@ const Product = ({
   );
 };
 
-export default Product;
+export default ProductDetail;

@@ -14,7 +14,7 @@ app.get('/api/items', (req, res) => {
   request(
     `https://api.mercadolibre.com/sites/MLA/search?q=${req.query.q}&limit=4`,
     function(error, response, body) {
-      let result = {};
+      let result = { categories: [] };
       let jsonBody = JSON.parse(body);
       result.items = jsonBody.results.map(item => ({
         id: item.id,
@@ -22,12 +22,20 @@ app.get('/api/items', (req, res) => {
         free_shipping: item.shipping.free_shipping,
         condition: item.condition,
         picture: item.thumbnail,
+        seller_address: {
+          country: item.seller_address.country.name,
+          state: item.seller_address.state.name,
+          city: item.seller_address.city.name
+        },
         price: {
           currency: '$',
           amount: item.price,
           decimals: 0
         }
       }));
+      if (jsonBody.filters.length > 0) {
+        result.categories = jsonBody.filters.find(filter => filter.id === 'category').values[0].path_from_root;
+      }
       return res.send(result);
     }
   );
@@ -61,10 +69,14 @@ app.get('/api/items/:id', (req, res) => {
       }
     };
 
-    rp(`https://api.mercadolibre.com/currencies/${item.currency_id}`).then(
-      currenciesResponse => {
-        const currencies = JSON.parse(currenciesResponse);
-        result.item.price.currency = currencies.symbol;
+    const categoryPromise = rp(`https://api.mercadolibre.com/categories/${item.category_id}`);
+    const currencyPromise = rp(`https://api.mercadolibre.com/currencies/${item.currency_id}`);
+    Promise.all([categoryPromise, currencyPromise]).then(
+      responses => {
+        const category = JSON.parse(responses[0]);
+        const currency = JSON.parse(responses[1]);
+        result.item.price.currency = currency.symbol;
+        result.categories = category.path_from_root;
 
         return res.send(result);
       }

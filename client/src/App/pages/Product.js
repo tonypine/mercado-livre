@@ -10,34 +10,29 @@ import ContentBox from '../components/common/ContentBox';
 import ProductDetail from './Product/ProductDetail';
 // import Product from './ProductList/ProductListItem';
 
-import { getItem } from '../store/items/selectors';
 import { fetchItem } from '../store/items/actions';
 
 import style from './Product.module.scss';
 
-const categories = [
-  { name: 'Eletrônica, Audio e Vídeo' },
-  { name: 'iPod' },
-  { name: 'Reprodutores' },
-  { name: 'iPod Touch' },
-  { name: '32 GB' }
-];
 const Product = ({ match }) => {
   const { id } = match.params;
 
   // REDUX
-  const product = useSelector(state => getItem(state, id));
+  const product = useSelector(state => state.items.selectedItem);
+  const categories = useSelector(state => state.items.categories);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchItem(id));
   }, [dispatch, id]);
 
+  if (!product) return null;
+  console.log('PRODUCT', product);
   return (
     <Container>
       <Row justify="center">
         <Col md={12}>
-          <Breadcrumbs items={categories} />
+          {product && <Breadcrumbs items={categories} />}
           <ContentBox className={style.contentWrapper}>
             {product && <ProductDetail {...product} />}
           </ContentBox>
